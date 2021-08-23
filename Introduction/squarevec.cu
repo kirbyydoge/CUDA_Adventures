@@ -1,12 +1,13 @@
 // Following from the course of "Udacity - Intro to Parallel Programming"
-// Simple program to square a given vector  in parallel
+// Simple program to square each element of a given vector in parallel
 
 #include <stdio.h>
 
 #define ARRAY_SIZE 64
 #define ARRAY_BYTES (ARRAY_SIZE * sizeof(float))
 
-__global__ void square(float *d_out, float *d_in) {
+__global__
+void square(float *d_out, float *d_in) {
 	int idx = threadIdx.x;
 	float f = d_in[idx];
 	d_out[idx] = f * f;
